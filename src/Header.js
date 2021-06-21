@@ -1,13 +1,16 @@
 import logo from "./images/logo.png";
-import CartCorner from "./CartCorner";
 
 function Header(props) {
     return (
         <header>
             <div className="wrapper headerFlex">
-                <img src={logo}/>
+                <img src={logo} alt="acm logo"/>
                 <div>
-                    <p>{props.status ? "Welcome!" : "Please Log In"}</p>
+                    {props.status ? <p>Welcome {props.name}!</p> : 
+                    <div>
+                        <p>Enter Your Name</p>
+                        <input type="text" id="newBook" onChange={props.test}/>
+                    </div>}
                     <div className="headerFlex">
                     <button className="log" onClick={props.login}>{props.status ? "Log Out" : "Log In"}</button>
                     </div>

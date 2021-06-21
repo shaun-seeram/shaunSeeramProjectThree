@@ -11,10 +11,9 @@ function App() {
   const [songs, setSongs] = useState([]);
   const [cartItems, setCartItems] = useState([]);
   const [loggedIn, setLoggedIn] = useState(false);
-  const [cartCount, setCartCount] = useState(0)
-
-  // let iteradedArray = []
-
+  const [cartCount, setCartCount] = useState(0);
+  const [name, setName] = useState("Bingus")
+  
   useEffect(() => {
 
     fetch("https://acnhapi.com/v1/songs/").then((data) => {
@@ -64,38 +63,13 @@ function App() {
 
   }, [cartItems]);
 
-// THIS WORKS
-  // for (let i = 0; i < songs.length; i+=1) {
-  //   iteradedArray.push({
-  //     name: songs[i].name["name-EUen"],
-  //     inStock: songs[i].isOrderable,
-  //     albumArt: songs[i].image_uri,
-  //     id: songs[i].id,
-  //     price: songs[i]["buy-price"]
-  //   });
-  // }
-
-  // console.log(iteradedArray)
-
-  // function addToArray() {
-  //   for (let item in keyArray) {
-  //     console.log(songs[keyArray[item]].id)
-  //     iteradedArray.push({
-  //       // name: songs[keyArray[item]].name.name-EUen,
-  //       // inStock: songs[keyArray[item]].isOrderable,
-  //       // albumArt: songs[index].image_uri,
-  //       // id: songs[index].id,
-  //       // price: songs[index].buy-price
-  //     });
-  //   }
-
-  //   setSongs(iteradedArray)
-  //   console.log(songs)
-  // }
+  function changeName(e) {
+    setName(e.target.value);
+  }
 
   return (
     <>
-      <Header status={loggedIn} login={()=>{setLoggedIn(!loggedIn)}} />
+      <Header status={loggedIn} login={()=>{setLoggedIn(!loggedIn)}} name={name} test={changeName} />
       <div className="wrapper headerFlex">
         <p>{loggedIn ? "Welcome!" : "Please log in"}</p>
         { !loggedIn ? null : <CartCorner count={cartCount} /> }
