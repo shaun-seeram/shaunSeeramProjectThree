@@ -4,7 +4,6 @@ import SongContainer from "./SongContainer";
 import Header from "./Header";
 import CartCorner from "./CartCorner";
 import Footer from "./Footer";
-import SideNav from "./SideNav";
 import bob from "./images/bob.gif";
 import ShoppingCart from "./ShoppingCart";
 
@@ -15,6 +14,7 @@ function App() {
   const [loggedIn, setLoggedIn] = useState(false);
   const [cartCount, setCartCount] = useState(0);
   const [name, setName] = useState("Bingus")
+  const [loading, setLoading] = useState(true)
   
   // Call the API --------------------
   useEffect(() => {
@@ -23,6 +23,7 @@ function App() {
       return data.json()
     }).then((jsonData) => {
       setSongs(Object.values(jsonData));
+      {setLoading(false)}
     });
   
   }, []);
@@ -90,7 +91,7 @@ function App() {
       <main className="songBody wrapper">
 
         { 
-          !loggedIn ? null : songs.map((song) =>{
+          !loggedIn ? null : loading ? <p>One moment please...</p> : songs.map((song) =>{
             return (
               <SongContainer imageUrl={song.image_uri} title={song.name["name-EUen"]} price={song["sell-price"]} key={song.id} cart={()=> {addToCart(song.id)}}/>
             )
