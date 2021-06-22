@@ -5,6 +5,8 @@ import Header from "./Header";
 import CartCorner from "./CartCorner";
 import Footer from "./Footer";
 import SideNav from "./SideNav";
+import bob from "./images/bob.gif";
+import ShoppingCart from "./ShoppingCart";
 
 function App() {
 
@@ -14,6 +16,7 @@ function App() {
   const [cartCount, setCartCount] = useState(0);
   const [name, setName] = useState("Bingus")
   
+  // Call the API --------------------
   useEffect(() => {
 
     fetch("https://acnhapi.com/v1/songs/").then((data) => {
@@ -24,6 +27,12 @@ function App() {
   
   }, []);
 
+  // Set the user's name -------------
+  function changeName(e) {
+    setName(e.target.value);
+  }
+
+  // Add to cart function ------------
   const addToCart = (songID) => {
     // Add to Shopping Cart
     let copiedCart = [...cartItems];
@@ -41,6 +50,7 @@ function App() {
     setSongs(filteredArray);
   }
 
+  // Remove from cart function -------
   const removeFromCart = (songID) => {
     // Add to Song Array
     let copiedSongs = [...songs];
@@ -58,39 +68,39 @@ function App() {
     setCartItems(filteredArray);
   }
 
+  // Set the cart counter ------------
   useEffect(() => {
     setCartCount(cartItems.length);
-
   }, [cartItems]);
-
-  function changeName(e) {
-    setName(e.target.value);
-  }
 
   return (
     <>
       <Header status={loggedIn} login={()=>{setLoggedIn(!loggedIn)}} name={name} test={changeName} />
+
       <div className="wrapper headerFlex">
-        <p>{loggedIn ? "Welcome!" : "Please log in"}</p>
-        { !loggedIn ? null : <CartCorner count={cartCount} /> }
-        <nav>
-        <h2>Cart</h2>
-        { cartItems.map((song) => {
-          return (
-            <SideNav art={song.image_uri} title={song.name["name-EUen"]} key={song.id} remove={()=> {removeFromCart(song.id)}} />
-            )
-        }) }
-        </nav>
+
+        <p>{loggedIn ? "Welcome!" : null}</p>
+
+        { !loggedIn ? <img src={bob} alt="Gif of Animal Crossing Bob spinning" className="bob" /> : <CartCorner count={cartCount} /> }
+
+        <ShoppingCart cart={cartItems} remove={removeFromCart} count={cartCount}/>
+
       </div>
+
       <main className="songBody wrapper">
-        { !loggedIn ? null : songs.map((song) =>{
+
+        { 
+          !loggedIn ? null : songs.map((song) =>{
             return (
-                <SongContainer imageUrl={song.image_uri} title={song.name["name-EUen"]} key={song.id} cart={()=> {addToCart(song.id)}}/>
+              <SongContainer imageUrl={song.image_uri} title={song.name["name-EUen"]} price={song["sell-price"]} key={song.id} cart={()=> {addToCart(song.id)}}/>
             )
           })
         }
+
       </main>
+
       <Footer />
+
     </>
   );
 }
