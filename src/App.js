@@ -76,13 +76,13 @@ function App() {
 
   return (
     <>
-      <Header status={loggedIn} login={()=>{setLoggedIn(!loggedIn)}} name={name} test={changeName} />
+      <Header status={loggedIn} login={()=>{setLoggedIn(!loggedIn)}} name={name} changeName={changeName} />
 
       <div className="wrapper headerFlex cartRow">
 
-        <p>{loggedIn ? "Welcome!" : null}</p>
+        <p>{loggedIn ? "Welcome to the Animal Crossing Music store!" : null}</p>
 
-        { !loggedIn ? <img src={bob} alt="Gif of Animal Crossing Bob spinning" className="bob" /> : <CartButton count={cartCount} /> }
+        { !loggedIn ? <div className="bobBG"><img src={bob} alt="Gif of Animal Crossing Bob spinning" className="bob" /></div> : <CartButton count={cartCount} /> }
 
         <ShoppingCart cart={cartItems} remove={removeFromCart} count={cartCount}/>
 

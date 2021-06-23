@@ -9,7 +9,7 @@ function Header(props) {
                     {props.status ? <p>Welcome {props.name}!</p> : 
                     <form onSubmit={(e)=>{e.preventDefault()}}>
                         <label htmlFor="userName">Enter Your Name</label>
-                        <input type="text" id="userName" onChange={props.test}/>
+                        <input type="text" id="userName" onChange={props.changeName}/>
                     </form>}
                     <button className="log" onClick={props.login}>{props.status ? "Log Out" : "Log In"}</button>
                 </div>

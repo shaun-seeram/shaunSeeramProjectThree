@@ -13,6 +13,26 @@ html { -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: 
   margin: 0 auto;
 }
 
+.bobBG {
+  width: 350px;
+  height: 350px;
+  margin: 20px auto;
+  background-image: url("./images/space.jpg");
+  border-radius: 50%;
+  background-size: 500px;
+  transition-duration: 20s;
+  transition-timing-function: ease-in;
+  transition-property: background-size;
+}
+
+.bobBG:hover {
+  background-size: 1000px;
+}
+
+a {
+  color: #000;
+}
+
 header {
   background-color: black;
   color: white;
@@ -23,6 +43,10 @@ header {
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+
+.cartRow p {
+  margin: 0;
 }
 
 .songBody {
@@ -149,7 +173,7 @@ form {
   flex-direction: column;
 }
 
-label {
+header label {
   margin-bottom: 10px;
 }
 
