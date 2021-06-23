@@ -1,4 +1,4 @@
-import SideNav from "./SideNav";
+import CartContainer from "./CartContainer";
 
 function ShoppingCart(props) {
     return (
@@ -6,7 +6,7 @@ function ShoppingCart(props) {
             <h2>Cart</h2>
             { props.cart.map((song) => {
             return (
-                <SideNav art={song.image_uri} title={song.name["name-EUen"]} price={song["sell-price"]} key={song.id} remove={()=> {props.remove(song.id)}} />
+                <CartContainer art={song.image_uri} title={song.name["name-EUen"]} price={song["sell-price"]} key={song.id} remove={()=> {props.remove(song.id)}} />
                 )
             }) }
             <p className="totalPrice">Total Price: b{props.count * 800}</p>

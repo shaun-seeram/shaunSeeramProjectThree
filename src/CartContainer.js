@@ -1,4 +1,4 @@
-function SideNav(props) {
+function CartContainer(props) {
     return (
         <div className="cartItemRow">
             <img src={props.art} alt={`Artwork for ${props.title}`} />
@@ -13,4 +13,4 @@ function SideNav(props) {
     )
 }
 
-export default SideNav
+export default CartContainer
