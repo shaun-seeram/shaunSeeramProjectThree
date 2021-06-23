@@ -7,7 +7,7 @@ function Header(props) {
                 <img src={logo} alt="acm logo"/>
                 <div>
                     {props.status ? <p>Welcome {props.name}!</p> : 
-                    <form>
+                    <form onSubmit={(e)=>{e.preventDefault()}}>
                         <label htmlFor="userName">Enter Your Name</label>
                         <input type="text" id="userName" onChange={props.test}/>
                     </form>}
