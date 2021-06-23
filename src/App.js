@@ -2,7 +2,7 @@ import './App.css';
 import {useEffect, useState} from "react";
 import SongContainer from "./SongContainer";
 import Header from "./Header";
-import CartCorner from "./CartCorner";
+import CartButton from "./CartButton";
 import Footer from "./Footer";
 import bob from "./images/bob.gif";
 import ShoppingCart from "./ShoppingCart";
@@ -78,11 +78,11 @@ function App() {
     <>
       <Header status={loggedIn} login={()=>{setLoggedIn(!loggedIn)}} name={name} test={changeName} />
 
-      <div className="wrapper headerFlex">
+      <div className="wrapper headerFlex cartRow">
 
         <p>{loggedIn ? "Welcome!" : null}</p>
 
-        { !loggedIn ? <img src={bob} alt="Gif of Animal Crossing Bob spinning" className="bob" /> : <CartCorner count={cartCount} /> }
+        { !loggedIn ? <img src={bob} alt="Gif of Animal Crossing Bob spinning" className="bob" /> : <CartButton count={cartCount} /> }
 
         <ShoppingCart cart={cartItems} remove={removeFromCart} count={cartCount}/>
 

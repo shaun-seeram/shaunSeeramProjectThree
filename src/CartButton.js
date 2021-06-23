@@ -1,7 +1,7 @@
 import { Icon, InlineIcon } from '@iconify/react';
 import shoppingCartSign from '@iconify-icons/el/shopping-cart-sign';
 
-function CartCorner(props) {
+function CartButton(props) {
     return (
         <>
             <label htmlFor="toggle" className="cartButton">
@@ -13,4 +13,4 @@ function CartCorner(props) {
     )
 }
 
-export default CartCorner
+export default CartButton
