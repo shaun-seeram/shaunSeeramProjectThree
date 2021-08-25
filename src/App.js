@@ -19,7 +19,7 @@ function App() {
   // Call the API --------------------
   useEffect(() => {
 
-    fetch("https://acnhapi.com/v1/songs/").then((data) => {
+    fetch("http://acnhapi.com/v1/songs/").then((data) => {
       return data.json()
     }).then((jsonData) => {
       setSongs(Object.values(jsonData));
